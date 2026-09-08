@@ -1,1 +1,1 @@
-PLACEHOLDER
+@file:///workspace/js-parts/part0.js
