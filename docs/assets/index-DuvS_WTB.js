@@ -7,5 +7,7 @@
     if (!r.ok) throw new Error("Failed to load part" + i);
     texts.push(await r.text());
   }
-  (0, eval)(texts.join(""));
-})().catch(function(e){ console.error(e); document.body.innerHTML = "<p>Latausvirhe: " + e.message + "</p>"; });
+  const blob = new Blob([texts.join("")], { type: "text/javascript" });
+  const url = URL.createObjectURL(blob);
+  await import(url);
+})().catch(function(e){ console.error(e); document.body.innerHTML = "<p style=\"padding:1rem;font-family:sans-serif\">Latausvirhe: " + e.message + "</p>"; });
